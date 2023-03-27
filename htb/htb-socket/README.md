@@ -1,10 +1,11 @@
 ## Enumeration
 
-### Rustscan
+### nmap
 
-sudo rustscan -t 1500 -b 1500 --ulimit 65000 -a 10.1xx.1xx.xxx -- -sV -sC -oA ./
+TARGET=10.129.112.189 && nmap -p$(nmap -p- --min-rate=1000 -T4 $TARGET -Pn | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) -sC -sV -Pn -vvv $TARGET -oN nmap_tcp_all.nmap
 
-Ports
+### Ports
+
 
 Open 10.1xx.1xx.xxx:22
 
